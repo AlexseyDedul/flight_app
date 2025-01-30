@@ -10,6 +10,7 @@
     <title>Tickets</title>
 </head>
 <body>
+    <%@ include file="header.jsp"%>
     <h1>Purchased tickets:</h1>
     <ul>
         <c:forEach var="ticket" items="${requestScope.tickets}">

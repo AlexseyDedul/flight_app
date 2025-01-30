@@ -3,15 +3,7 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.53">
     <root id="1">
       <DateStyle>mdy</DateStyle>
-      <Grants>1||-9223372036854775808|c|G
-1||10|c|G
-1||10|C|G
-1||10|T|G
-14105||-9223372036854775808|c|G
-14105||10|c|G
-14105||10|C|G
-14105||10|T|G</Grants>
-      <IntrospectionStateNumber>781</IntrospectionStateNumber>
+      <IntrospectionStateNumber>783</IntrospectionStateNumber>
       <ServerVersion>14.15</ServerVersion>
       <StartupTime>1737623724</StartupTime>
       <TimeZones>true ACDT
@@ -813,7 +805,7 @@ false Zulu
 13740||10|C|G
 13740||-9223372036854775808|U|G
 13740||10|U|G</Grants>
-      <IntrospectionStateNumber>781</IntrospectionStateNumber>
+      <IntrospectionStateNumber>783</IntrospectionStateNumber>
       <ObjectId>16386</ObjectId>
       <OwnerName>alexsey</OwnerName>
     </database>
@@ -4250,8 +4242,8 @@ false Zulu
     <schema id="264" parent="3" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>781</IntrospectionStateNumber>
-      <LastIntrospectionLocalTimestamp>2025-01-29.10:34:32</LastIntrospectionLocalTimestamp>
+      <IntrospectionStateNumber>783</IntrospectionStateNumber>
+      <LastIntrospectionLocalTimestamp>2025-01-30.10:26:58</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>526</StateNumber>
       <OwnerName>alexsey</OwnerName>
@@ -4288,37 +4280,51 @@ false Zulu
       <StoredType>integer|0s</StoredType>
       <OwnerName>postgres</OwnerName>
     </sequence>
-    <table id="269" parent="264" name="aircraft">
+    <sequence id="269" parent="264" name="users_id_seq">
+      <ObjectId>16535</ObjectId>
+      <SequenceIdentity>1</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>782</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <table id="270" parent="264" name="aircraft">
       <ObjectId>16455</ObjectId>
       <StateNumber>748</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="270" parent="264" name="airport">
+    <table id="271" parent="264" name="airport">
       <ObjectId>16448</ObjectId>
       <StateNumber>749</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="271" parent="264" name="flight">
+    <table id="272" parent="264" name="flight">
       <ObjectId>16470</ObjectId>
       <StateNumber>749</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="272" parent="264" name="seat">
+    <table id="273" parent="264" name="seat">
       <ObjectId>16461</ObjectId>
       <StateNumber>748</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="273" parent="264" name="ticket">
+    <table id="274" parent="264" name="ticket">
       <ObjectId>16492</ObjectId>
       <StateNumber>749</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <column id="274" parent="269" name="id">
+    <table id="275" parent="264" name="users">
+      <ObjectId>16536</ObjectId>
+      <StateNumber>782</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <column id="276" parent="270" name="id">
       <DefaultExpression>nextval(&apos;aircraft_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -4327,13 +4333,13 @@ false Zulu
       <SequenceId>16454</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="275" parent="269" name="model">
+    <column id="277" parent="270" name="model">
       <Position>2</Position>
       <StateNumber>747</StateNumber>
       <StoredType>varchar(128)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <index id="276" parent="269" name="aircraft_pkey">
+    <index id="278" parent="270" name="aircraft_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16459</ObjectId>
@@ -4342,14 +4348,14 @@ false Zulu
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="277" parent="269" name="aircraft_pkey">
+    <key id="279" parent="270" name="aircraft_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16460</ObjectId>
       <Primary>1</Primary>
       <StateNumber>747</StateNumber>
       <UnderlyingIndexId>16459</UnderlyingIndexId>
     </key>
-    <column id="278" parent="270" name="code">
+    <column id="280" parent="271" name="code">
       <DefaultExpression>nextval(&apos;airport_code_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -4358,19 +4364,19 @@ false Zulu
       <SequenceId>16447</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="279" parent="270" name="country">
+    <column id="281" parent="271" name="country">
       <Position>2</Position>
       <StateNumber>746</StateNumber>
       <StoredType>varchar(128)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="280" parent="270" name="city">
+    <column id="282" parent="271" name="city">
       <Position>3</Position>
       <StateNumber>746</StateNumber>
       <StoredType>varchar(128)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <index id="281" parent="270" name="airport_pkey">
+    <index id="283" parent="271" name="airport_pkey">
       <ColNames>code</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16452</ObjectId>
@@ -4379,14 +4385,14 @@ false Zulu
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="282" parent="270" name="airport_pkey">
+    <key id="284" parent="271" name="airport_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16453</ObjectId>
       <Primary>1</Primary>
       <StateNumber>746</StateNumber>
       <UnderlyingIndexId>16452</UnderlyingIndexId>
     </key>
-    <column id="283" parent="271" name="id">
+    <column id="285" parent="272" name="id">
       <DefaultExpression>nextval(&apos;flight_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -4395,49 +4401,49 @@ false Zulu
       <SequenceId>16469</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="284" parent="271" name="flight_no">
+    <column id="286" parent="272" name="flight_no">
       <Position>2</Position>
       <StateNumber>749</StateNumber>
       <StoredType>varchar(128)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="285" parent="271" name="departure_date">
+    <column id="287" parent="272" name="departure_date">
       <Position>3</Position>
       <StateNumber>749</StateNumber>
       <StoredType>timestamp|0s</StoredType>
       <TypeId>1114</TypeId>
     </column>
-    <column id="286" parent="271" name="departure_airport_code">
+    <column id="288" parent="272" name="departure_airport_code">
       <Position>4</Position>
       <StateNumber>749</StateNumber>
       <StoredType>integer|0s</StoredType>
       <TypeId>23</TypeId>
     </column>
-    <column id="287" parent="271" name="arrival_date">
+    <column id="289" parent="272" name="arrival_date">
       <Position>5</Position>
       <StateNumber>749</StateNumber>
       <StoredType>timestamp|0s</StoredType>
       <TypeId>1114</TypeId>
     </column>
-    <column id="288" parent="271" name="arrival_airport_code">
+    <column id="290" parent="272" name="arrival_airport_code">
       <Position>6</Position>
       <StateNumber>749</StateNumber>
       <StoredType>integer|0s</StoredType>
       <TypeId>23</TypeId>
     </column>
-    <column id="289" parent="271" name="aircraft_id">
+    <column id="291" parent="272" name="aircraft_id">
       <Position>7</Position>
       <StateNumber>749</StateNumber>
       <StoredType>integer|0s</StoredType>
       <TypeId>23</TypeId>
     </column>
-    <column id="290" parent="271" name="status">
+    <column id="292" parent="272" name="status">
       <Position>8</Position>
       <StateNumber>749</StateNumber>
       <StoredType>varchar(128)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <foreign-key id="291" parent="271" name="flight_departure_airport_code_fkey">
+    <foreign-key id="293" parent="272" name="flight_departure_airport_code_fkey">
       <ColNames>departure_airport_code</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16476</ObjectId>
@@ -4445,7 +4451,7 @@ false Zulu
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>16448</RefTableId>
     </foreign-key>
-    <foreign-key id="292" parent="271" name="flight_arrival_airport_code_fkey">
+    <foreign-key id="294" parent="272" name="flight_arrival_airport_code_fkey">
       <ColNames>arrival_airport_code</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16481</ObjectId>
@@ -4453,7 +4459,7 @@ false Zulu
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>16448</RefTableId>
     </foreign-key>
-    <foreign-key id="293" parent="271" name="flight_aircraft_id_fkey">
+    <foreign-key id="295" parent="272" name="flight_aircraft_id_fkey">
       <ColNames>aircraft_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16486</ObjectId>
@@ -4461,7 +4467,7 @@ false Zulu
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>16455</RefTableId>
     </foreign-key>
-    <index id="294" parent="271" name="flight_pkey">
+    <index id="296" parent="272" name="flight_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16474</ObjectId>
@@ -4470,26 +4476,26 @@ false Zulu
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="295" parent="271" name="flight_pkey">
+    <key id="297" parent="272" name="flight_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16475</ObjectId>
       <Primary>1</Primary>
       <StateNumber>749</StateNumber>
       <UnderlyingIndexId>16474</UnderlyingIndexId>
     </key>
-    <column id="296" parent="272" name="aircraft_id">
+    <column id="298" parent="273" name="aircraft_id">
       <Position>1</Position>
       <StateNumber>748</StateNumber>
       <StoredType>integer|0s</StoredType>
       <TypeId>23</TypeId>
     </column>
-    <column id="297" parent="272" name="seat_no">
+    <column id="299" parent="273" name="seat_no">
       <Position>2</Position>
       <StateNumber>748</StateNumber>
       <StoredType>varchar(10)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <foreign-key id="298" parent="272" name="seat_aircraft_id_fkey">
+    <foreign-key id="300" parent="273" name="seat_aircraft_id_fkey">
       <ColNames>aircraft_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16464</ObjectId>
@@ -4497,7 +4503,7 @@ false Zulu
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>16455</RefTableId>
     </foreign-key>
-    <column id="299" parent="273" name="id">
+    <column id="301" parent="274" name="id">
       <DefaultExpression>nextval(&apos;ticket_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -4506,37 +4512,37 @@ false Zulu
       <SequenceId>16491</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="300" parent="273" name="passport_no">
+    <column id="302" parent="274" name="passport_no">
       <Position>2</Position>
       <StateNumber>749</StateNumber>
       <StoredType>varchar(128)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="301" parent="273" name="passenger_name">
+    <column id="303" parent="274" name="passenger_name">
       <Position>3</Position>
       <StateNumber>749</StateNumber>
       <StoredType>varchar(128)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="302" parent="273" name="flight_id">
+    <column id="304" parent="274" name="flight_id">
       <Position>4</Position>
       <StateNumber>749</StateNumber>
       <StoredType>integer|0s</StoredType>
       <TypeId>23</TypeId>
     </column>
-    <column id="303" parent="273" name="seat_no">
+    <column id="305" parent="274" name="seat_no">
       <Position>5</Position>
       <StateNumber>749</StateNumber>
       <StoredType>varchar(10)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="304" parent="273" name="cost">
+    <column id="306" parent="274" name="cost">
       <Position>6</Position>
       <StateNumber>749</StateNumber>
       <StoredType>numeric|0s</StoredType>
       <TypeId>1700</TypeId>
     </column>
-    <foreign-key id="305" parent="273" name="ticket_flight_id_fkey">
+    <foreign-key id="307" parent="274" name="ticket_flight_id_fkey">
       <ColNames>flight_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16502</ObjectId>
@@ -4544,7 +4550,7 @@ false Zulu
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>16470</RefTableId>
     </foreign-key>
-    <index id="306" parent="273" name="ticket_pkey">
+    <index id="308" parent="274" name="ticket_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16498</ObjectId>
@@ -4553,7 +4559,7 @@ false Zulu
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="307" parent="273" name="ticket_passport_no_key">
+    <index id="309" parent="274" name="ticket_passport_no_key">
       <ColNames>passport_no</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16500</ObjectId>
@@ -4564,18 +4570,102 @@ false Zulu
       <CollationIds>100</CollationIds>
       <CollationParentNames>pg_catalog</CollationParentNames>
     </index>
-    <key id="308" parent="273" name="ticket_pkey">
+    <key id="310" parent="274" name="ticket_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16499</ObjectId>
       <Primary>1</Primary>
       <StateNumber>749</StateNumber>
       <UnderlyingIndexId>16498</UnderlyingIndexId>
     </key>
-    <key id="309" parent="273" name="ticket_passport_no_key">
+    <key id="311" parent="274" name="ticket_passport_no_key">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16501</ObjectId>
       <StateNumber>749</StateNumber>
       <UnderlyingIndexId>16500</UnderlyingIndexId>
+    </key>
+    <column id="312" parent="275" name="id">
+      <DefaultExpression>nextval(&apos;users_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>782</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <SequenceId>16535</SequenceId>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="313" parent="275" name="name">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>782</StateNumber>
+      <StoredType>varchar(124)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="314" parent="275" name="birthday">
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StateNumber>782</StateNumber>
+      <StoredType>date|0s</StoredType>
+      <TypeId>1082</TypeId>
+    </column>
+    <column id="315" parent="275" name="email">
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StateNumber>782</StateNumber>
+      <StoredType>varchar(124)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="316" parent="275" name="password">
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+      <StateNumber>782</StateNumber>
+      <StoredType>varchar(32)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="317" parent="275" name="role">
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+      <StateNumber>782</StateNumber>
+      <StoredType>varchar(32)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="318" parent="275" name="gender">
+      <NotNull>1</NotNull>
+      <Position>7</Position>
+      <StateNumber>782</StateNumber>
+      <StoredType>varchar(32)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="319" parent="275" name="users_pkey">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16540</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>782</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="320" parent="275" name="users_email_key">
+      <ColNames>email</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16542</ObjectId>
+      <StateNumber>782</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationNames>default</CollationNames>
+      <CollationIds>100</CollationIds>
+      <CollationParentNames>pg_catalog</CollationParentNames>
+    </index>
+    <key id="321" parent="275" name="users_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16541</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>782</StateNumber>
+      <UnderlyingIndexId>16540</UnderlyingIndexId>
+    </key>
+    <key id="322" parent="275" name="users_email_key">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16543</ObjectId>
+      <StateNumber>782</StateNumber>
+      <UnderlyingIndexId>16542</UnderlyingIndexId>
     </key>
   </database-model>
 </dataSource>
