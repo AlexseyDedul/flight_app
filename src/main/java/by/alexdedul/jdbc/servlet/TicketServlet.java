@@ -1,6 +1,7 @@
 package by.alexdedul.jdbc.servlet;
 
 import by.alexdedul.jdbc.service.TicketService;
+import by.alexdedul.jdbc.utlis.JspHelper;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -21,18 +22,10 @@ public class TicketServlet extends HttpServlet {
         resp.setCharacterEncoding(StandardCharsets.UTF_8.name());
 
         Long flightId = Long.valueOf(req.getParameter("flightId"));
-        try(var writer = resp.getWriter()){
-            writer.write("<h1>Purchased tickets:</h1>");
-            writer.write("<ul>");
-            ticketService.findTicketsByFlightId(flightId)
-                    .stream()
-                    .forEach(ticketDto -> writer.write(
-                            """
-                                <li>%s</li>
-                                """.formatted(ticketDto.seatNo())
-                    ));
-            writer.write("</ul>");
-        }
+
+        req.setAttribute("tickets", ticketService.findTicketsByFlightId(flightId));
+
+        req.getRequestDispatcher(JspHelper.getPath("tickets")).forward(req, resp);
 
     }
 }
